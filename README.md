@@ -3,18 +3,18 @@
 The age and gender detection dataset is a large-scale collection of over 23,704 face images annotated with age, gender, and ethnicity labels. The dataset spans a wide age range from 0 to 116 years old and includes images with variations in pose, expression, illumination, occlusion, and resolution. This diverse dataset enables the models to learn and generalize from a wide range of facial characteristics. The ethnicity labels encompass various ethnic groups, ensuring the models can capture and classify different ethnicities accurately
 
 DatasetLink:  https://www.kaggle.com/datasets/nipunarora8/age-gender-and-ethnicity-face-data-csv
-## References:
 
-Khan, R., Zamir, O., Shah, M. Age Classification in Unconstrained Videos with Long Short-Term Memory. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017.
 
-Rothe, R., Timofte, R., Van Gool, L. Deep expectation of real and apparent age from a single image without facial landmarks. International Journal of Computer Vision (IJCV), 2018.
+## Model Architecture and Training:
+The age, gender and Ethnicity classification model is built using a CNN architecture. The model consists of multiple layers, including convolutional layers, pooling layers, and dense layers. These layers are designed to extract features from the facial images and learn representations that are discriminative for classification.
+The model architecture is as follows:
 
-Parkhi, O. M., Vedaldi, A., Zisserman, A. Deep Face Recognition. British Machine Vision Conference (BMVC), 2015.
+The first layer is a 2D convolutional layer with 32 filters and a filter size of 3x3. It uses the ReLU activation function and takes input images of size 48x48 pixels.
+A max-pooling layer with a pool size of 2x2 is added to downsample the feature maps.
+Another convolutional layer with 64 filters and a filter size of 3x3 follows the max-pooling layer.
+Another max-pooling layer is added.
+The feature maps are then flattened to a 1D vector.
+A dense layer with 64 units and ReLU activation is added to capture higher-level features.
+The final dense layer consists of 5 units with softmax activation, representing the age categories.
 
-Uddin, M. Z., Mohammed, N., Barman, S., Murshed, M. Gender and Age Classification using Convolutional Neural Networks. Proceedings of the International Conference on Pattern Recognition and Artificial Intelligence (PRAI), 2018.
-
-Li, Z., Shan, S., Chen, X. Age Estimation by Multi-layer Multi-pattern Analysis. IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2012.
-
-Lanitis, A., Taylor, C. J., Cootes, T. F. Toward Automatic Simulation of Aging Effects on Face Images. IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2002.
-
-Kim, H., Baltrusaitis, T., Robinson, P., Morency, L. P. Deep Temporal Models and Active Appearance Models for Facial Action Unit Detection. IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2017.
+The model is compiled with the Adam optimizer, using sparse categorical cross-entropy loss as the objective function. It is trained for a fixed number of epochs using a batch size of 32.
